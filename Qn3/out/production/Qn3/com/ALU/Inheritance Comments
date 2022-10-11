@@ -1,0 +1,33 @@
+1- Can a class inherit multiple classes in java? justify your answer.?
+
+    The answer here is complex, but it is probably no. Java doesn't support multible classes inheritance,
+    but it supports multible implementation using interfaces; that's because a class can inherit only one
+    class and multiple interfaces in a java programs.
+    for example:
+    class A{}
+    class B{}
+    class C extends A,B{} --> This is wrong.
+
+    The right way is as the following:
+    class A{}
+    interface B{}
+    interface C{}
+
+    class D extends A implements B, C{ --> This is right.
+    This last one is correct as this example is extending only one class A and implementing multiple interfaces i.e. B and C.
+
+    This takes us to question number two:
+    2- Can a class implement multiple interfaces? justify your answer?
+
+    The answer here has been given above, which is yes, a class can implement multible interfaces.
+    which is the only way to multibally inherit and avoid the problems that comes with multible classes
+    inheritance.
+
+    The reason that Java class cannot extend multiple classes is a problem called "the diamond problem"
+    "The Diamond problem" occurs due of constructor chaining.
+    On the other hand, constructor is not present in Interface so no the diamond problem won't occur
+    if we implement multiple interfaces.
+
+
+
+

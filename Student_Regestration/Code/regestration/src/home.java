@@ -1,0 +1,566 @@
+
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+
+/**
+ *
+ * @author Hp
+ */
+public class home extends javax.swing.JFrame {
+    
+    Connection conn = null;
+    Statement stmt = null;
+    Statement stmt2 = null;
+    ResultSet rs = null;
+    ResultSet rs2 = null;
+    ResultSet rs3 = null;
+    String class_;
+    String result ;
+    String result2;
+    String rollNum;
+    /**
+     * Creates new form home
+     */
+    public home() {
+        
+        super("home");
+        initComponents();
+        conn = dbconnection.connection();
+        String CSsql = "SELECT * FROM student WHERE stdclass = 'CS'";
+        String GCsql = "SELECT * FROM student WHERE stdclass = 'GC'";
+        String BAsql = "SELECT * FROM student WHERE stdclass = 'BA'";
+        String ELsql = "SELECT * FROM student WHERE stdclass = 'EL'";
+        
+                //        ----------------------
+        try {
+            
+            
+            stmt2 = conn.createStatement();
+            rs3 = stmt2.executeQuery(CSsql);
+            while(rs3.next()){
+                String Id = String.valueOf(rs3.getInt("id"));
+                String Name = String.valueOf(rs3.getString("stdname"));
+                String Email = String.valueOf(rs3.getString("stdemail"));
+                String RollNum = String.valueOf(rs3.getString("stdrollnumber"));
+                
+//                Array to store data in the table
+                
+                String tbData[] = {Id, Name, Email, RollNum};
+                DefaultTableModel tblModel = (DefaultTableModel)CStable.getModel();
+                tblModel.addRow(tbData);
+                }
+        } catch (SQLException ex) {
+            rs3 = null;
+        }
+        
+//        ########################table 02 #################
+        
+        try {
+            
+            
+            stmt2 = conn.createStatement();
+            rs3 = stmt2.executeQuery(GCsql);
+            while(rs3.next()){
+                String Id = String.valueOf(rs3.getInt("id"));
+                String Name = String.valueOf(rs3.getString("stdname"));
+                String Email = String.valueOf(rs3.getString("stdemail"));
+                String RollNum = String.valueOf(rs3.getString("stdrollnumber"));
+                
+//                Array to store data in the table
+                
+                String tbData[] = {Id, Name, Email, RollNum};
+                DefaultTableModel tblModel = (DefaultTableModel)GCtable.getModel();
+                tblModel.addRow(tbData);
+                }
+        } catch (SQLException ex) {
+            rs3 = null;
+        }
+        
+//        #################Table 03######################
+
+        try {
+            
+            
+            stmt2 = conn.createStatement();
+            rs3 = stmt2.executeQuery(BAsql);
+            while(rs3.next()){
+                String Id = String.valueOf(rs3.getInt("id"));
+                String Name = String.valueOf(rs3.getString("stdname"));
+                String Email = String.valueOf(rs3.getString("stdemail"));
+                String RollNum = String.valueOf(rs3.getString("stdrollnumber"));
+                
+//                Array to store data in the table
+                
+                String tbData[] = {Id, Name, Email, RollNum};
+                DefaultTableModel tblModel = (DefaultTableModel)BAtable.getModel();
+                tblModel.addRow(tbData);
+                }
+        } catch (SQLException ex) {
+            rs3 = null;
+        }
+        
+        //        #################Table 04######################
+
+        try {
+            
+            
+            stmt2 = conn.createStatement();
+            rs3 = stmt2.executeQuery(ELsql);
+            while(rs3.next()){
+                String Id = String.valueOf(rs3.getInt("id"));
+                String Name = String.valueOf(rs3.getString("stdname"));
+                String Email = String.valueOf(rs3.getString("stdemail"));
+                String RollNum = String.valueOf(rs3.getString("stdrollnumber"));
+                
+//                Array to store data in the table
+                
+                String tbData[] = {Id, Name, Email, RollNum};
+                DefaultTableModel tblModel = (DefaultTableModel)ELtable.getModel();
+                tblModel.addRow(tbData);
+                }
+        } catch (SQLException ex) {
+            rs3 = null;
+        }
+        
+        
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        Pel = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        Sresult = new javax.swing.JLabel();
+        SDresult = new javax.swing.JLabel();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 220), new java.awt.Dimension(0, 220), new java.awt.Dimension(32767, 220));
+        HLemail = new javax.swing.JLabel();
+        HLpassword = new javax.swing.JLabel();
+        HTemail = new javax.swing.JTextField();
+        HTpassword = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        HBcheck = new javax.swing.JButton();
+        HLrollnumber = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        CStable = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        GCtable = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        BAtable = new javax.swing.JTable();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        ELtable = new javax.swing.JTable();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Student Regestration");
+        setMaximumSize(new java.awt.Dimension(610, 500));
+        setMinimumSize(new java.awt.Dimension(600, 490));
+        setSize(new java.awt.Dimension(608, 498));
+
+        jPanel1.setMaximumSize(new java.awt.Dimension(600, 375));
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 375));
+
+        Sresult.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Sresult.setForeground(new java.awt.Color(51, 153, 0));
+        Sresult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Sresult.setText(result);
+
+        SDresult.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        SDresult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SDresult.setText("Your Decsion Should appear here after pressing");
+
+        HLemail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        HLemail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HLemail.setText("Email");
+        HLemail.setToolTipText("");
+
+        HLpassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        HLpassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HLpassword.setText("Password");
+
+        HTemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HTemailActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Welcome To Your DashBoard");
+
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Please Enter Your Credentials");
+        jLabel2.setAutoscrolls(true);
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("again to check your class decision");
+        jLabel3.setAutoscrolls(true);
+        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        HBcheck.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        HBcheck.setText("Check");
+        HBcheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HBcheckActionPerformed(evt);
+            }
+        });
+
+        HLrollnumber.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        HLrollnumber.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HLrollnumber.setText("Your Roll Number is : " + rollNum);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Sresult, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(77, 77, 77))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(HTemail, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(HTpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(HLemail, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(HLpassword))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(HBcheck)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SDresult, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(HLrollnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(122, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Sresult, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addComponent(HLemail)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(HTemail, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(HLpassword)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(HTpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(HBcheck))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SDresult, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(HLrollnumber)
+                                .addGap(5, 5, 5))))))
+        );
+
+        Pel.addTab("Summary", jPanel1);
+
+        CStable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "id", "Name", "Email", "Roll Number"
+            }
+        ));
+        jScrollPane1.setViewportView(CStable);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        Pel.addTab("CS Current Students", jPanel2);
+
+        GCtable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "id", "Name", "Email", "Roll Number"
+            }
+        ));
+        jScrollPane2.setViewportView(GCtable);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        Pel.addTab("GC Current Students", jPanel3);
+
+        BAtable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "id", "Name", "Email", "Roll Number"
+            }
+        ));
+        jScrollPane3.setViewportView(BAtable);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        Pel.addTab("BA Current Students", jPanel4);
+
+        ELtable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "id", "Name", "Email", "Roll Number"
+            }
+        ));
+        jScrollPane4.setViewportView(ELtable);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        Pel.addTab("EL Current Students ", jPanel5);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Pel, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Pel)
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void HTemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HTemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HTemailActionPerformed
+
+    private void HBcheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HBcheckActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            stmt = conn.createStatement();
+            String userEmail = HTemail.getText();
+            String userPassword = HTpassword.getText();
+            
+            String sql = "SELECT * FROM student WHERE stdemail = '"+userEmail+"' && stdpassword = '"+userPassword+"' ";
+            
+            rs = stmt.executeQuery(sql); 
+        
+            if (rs.next()){
+                
+                try{
+                    String sql2 = "SELECT * from student WHERE stdemail = '"+userEmail+"'";
+                    rs2 = stmt.executeQuery(sql2);
+                    
+                     while (rs2.next()) {
+                        class_ = rs2.getString("stdclass");
+                        rollNum = rs2.getString("stdrollnumber");
+                            }
+                     HLrollnumber.setText("Your Roll Number is : " + rollNum);
+                     if ("Rejected".equals(class_)){
+                        result = "Rejected";
+                        result2 = "Unfortuantly you are rejected";
+                        Sresult.setForeground(new java.awt.Color(255, 0, 0));
+                    }
+                    else if (("CS".equals(class_))|| ("GC".equals(class_)) || ("BA".equals(class_)) || ("EL".equals(class_))) {
+                        result = "Congratulations";
+                        result2 = "You have been accepted to be in the " + class_ + " Department";
+                        Sresult.setForeground(new java.awt.Color(51, 153, 0));
+                    }
+
+                    else {
+                        result = "No Data available";
+                        result2 = "The result should appear here";
+                        Sresult.setForeground(new java.awt.Color(255, 255, 255));
+                    }
+                     SDresult.setText(result2);
+                     Sresult.setText(result);
+                     
+                }
+                catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }   
+                
+            }   
+                
+            else{
+                JOptionPane.showMessageDialog(null, "Password or mail is Invalid");
+                }
+        
+        } 
+        
+            
+        
+        catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+            
+            
+    }//GEN-LAST:event_HBcheckActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new home().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable BAtable;
+    private javax.swing.JTable CStable;
+    private javax.swing.JTable ELtable;
+    private javax.swing.JTable GCtable;
+    private javax.swing.JButton HBcheck;
+    private javax.swing.JLabel HLemail;
+    private javax.swing.JLabel HLpassword;
+    private javax.swing.JLabel HLrollnumber;
+    private javax.swing.JTextField HTemail;
+    private javax.swing.JPasswordField HTpassword;
+    private javax.swing.JTabbedPane Pel;
+    private javax.swing.JLabel SDresult;
+    private javax.swing.JLabel Sresult;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    // End of variables declaration//GEN-END:variables
+}
