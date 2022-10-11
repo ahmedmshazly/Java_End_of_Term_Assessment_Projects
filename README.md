@@ -5,20 +5,21 @@ This repository contains the codes of the End of Term Assessment projects for th
 ### The prompt is as the following:
 
 **Instructions**
-  The work will be done individually.
-  The code shall be submitted in a zipped file.
-  The source codes will be shared in .java files.
-  The work will be graded out of 25 points.
-  The work will be done in a maximum of 2 weeks.
-  The submission will be done on canvas only.
+  
+  - The work will be done individually.
+  - The code shall be submitted in a zipped file.
+  - The source codes will be shared in .java files.
+  - The work will be graded out of 25 points.
+  - The work will be done in a maximum of 2 weeks.
+  - The submission will be done on canvas only.
 
 
 **Learning Outcomes**
-  Combining variables, classes, objects, control flow and repetitive structures.
-  Creating database and interact with it using java interfaces.
-  Adding events and event listeners to the interface objects.
-  Implementing inheritance and interfaces
-  Achieving modularization
+  - Combining variables, classes, objects, control flow and repetitive structures.
+  - Creating database and interact with it using java interfaces.
+  - Adding events and event listeners to the interface objects.
+  - Implementing inheritance and interfaces
+  - Achieving modularization
  
 -----------------------------------------------------
 
