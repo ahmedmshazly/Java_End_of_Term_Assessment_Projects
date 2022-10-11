@@ -5,7 +5,6 @@ This repository contains the codes of the End of Term Assessment projects for th
 ### The prompt is as the following:
 
 **Instructions**
-
   The work will be done individually.
   The code shall be submitted in a zipped file.
   The source codes will be shared in .java files.
@@ -15,7 +14,6 @@ This repository contains the codes of the End of Term Assessment projects for th
 
 
 **Learning Outcomes**
-
   Combining variables, classes, objects, control flow and repetitive structures.
   Creating database and interact with it using java interfaces.
   Adding events and event listeners to the interface objects.
